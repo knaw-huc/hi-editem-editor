@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ComponentSpec isProfile="true" CMDVersion="1.2" CMDOriginalVersion="1.2" xsi:noNamespaceSchemaLocation="https://infra.clarin.eu/CMDI/1.x/xsd/cmd-component.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Header>
+        <ID>clarin.eu:cr1:p_1772521921674</ID>
+        <Name>Bibl</Name>
+        <Description>bibliographic references</Description>
+        <Status>development</Status>
+    </Header>
+    <Component name="Bibl" CardinalityMin="1" CardinalityMax="1">
+        <Element name="id" ValueScheme="string" CardinalityMin="1" CardinalityMax="1"/>
+        <Element name="label" ValueScheme="string" CardinalityMin="1" CardinalityMax="1" Multilingual="true" cue:DisplayPriority="1" xmlns:cue="http://www.clarin.eu/cmd/cues/1"/>
+        <Element name="description" ValueScheme="string" CardinalityMin="0" CardinalityMax="1"/>
+        <Element name="ref" ValueScheme="string" CardinalityMin="0" CardinalityMax="unbounded"/>
+        <Component name="Title" CardinalityMin="1" CardinalityMax="1">
+            <Element name="title" ValueScheme="string" CardinalityMin="1" CardinalityMax="1" cue:DisplayPriority="1" xmlns:cue="http://www.clarin.eu/cmd/cues/1"/>
+            <Element name="level" CardinalityMin="1" CardinalityMax="1">
+                <ValueScheme>
+                    <Vocabulary>
+                        <enumeration>
+                            <item AppInfo="articles">a</item>
+                            <item AppInfo="journals">j</item>
+                            <item AppInfo="monographs">m</item>
+                            <item AppInfo="series">s</item>
+                        </enumeration>
+                    </Vocabulary>
+                </ValueScheme>
+            </Element>
+        </Component>
+    </Component>
+</ComponentSpec>

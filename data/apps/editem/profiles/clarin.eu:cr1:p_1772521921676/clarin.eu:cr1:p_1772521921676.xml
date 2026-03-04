@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ComponentSpec isProfile="true" CMDVersion="1.2" CMDOriginalVersion="1.2" xsi:noNamespaceSchemaLocation="https://infra.clarin.eu/CMDI/1.x/xsd/cmd-component.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Header>
+        <ID>clarin.eu:cr1:p_1772521921676</ID>
+        <Name>Artwork</Name>
+        <Description>artworks mentioned in the edition</Description>
+        <Status>development</Status>
+    </Header>
+    <Component name="Artwork" CardinalityMin="1" CardinalityMax="1">
+        <Element name="id" ValueScheme="string" CardinalityMin="1" CardinalityMax="1" cue:DisplayPriority="1" xmlns:cue="http://www.clarin.eu/cmd/cues/1"/>
+        <Element name="source" ValueScheme="anyURI" CardinalityMin="0" CardinalityMax="unbounded"/>
+        <Element name="corresp" ValueScheme="string" CardinalityMin="0" CardinalityMax="1"/>
+        <Element name="title" ValueScheme="string" CardinalityMin="1" CardinalityMax="1" Multilingual="true"/>
+        <Element name="idno" ValueScheme="string" CardinalityMin="0" CardinalityMax="unbounded"/>
+        <Element name="desc" ValueScheme="string" CardinalityMin="1" CardinalityMax="1" Multilingual="true"/>
+        <Element name="creationDate" ValueScheme="string" CardinalityMin="1" CardinalityMax="1"/>
+        <Element name="creator" ValueScheme="string" CardinalityMin="0" CardinalityMax="unbounded"/>
+        <Element name="after" ValueScheme="string" CardinalityMin="1" CardinalityMax="1"/>
+        <Component name="HorizontalSize" CardinalityMin="0" CardinalityMax="1">
+            <Element name="quantity" ValueScheme="decimal" CardinalityMin="1" CardinalityMax="1" cue:DisplayPriority="1" xmlns:cue="http://www.clarin.eu/cmd/cues/1"/>
+            <Element name="unit" ValueScheme="string" CardinalityMin="1" CardinalityMax="1" cue:DisplayPriority="1" xmlns:cue="http://www.clarin.eu/cmd/cues/1"/>
+        </Component>
+        <Component name="VericalSize" CardinalityMin="0" CardinalityMax="1">
+            <Element name="quantity" ValueScheme="decimal" CardinalityMin="1" CardinalityMax="1" cue:DisplayPriority="1" xmlns:cue="http://www.clarin.eu/cmd/cues/1"/>
+            <Element name="unit" ValueScheme="string" CardinalityMin="1" CardinalityMax="1" cue:DisplayPriority="1" xmlns:cue="http://www.clarin.eu/cmd/cues/1"/>
+        </Component>
+        <Component name="CatRef" CardinalityMin="1" CardinalityMax="1">
+            <Element name="ref" ValueScheme="string" CardinalityMin="1" CardinalityMax="1" cue:DisplayPriority="1" xmlns:cue="http://www.clarin.eu/cmd/cues/1"/>
+            <Element name="target" ValueScheme="string" CardinalityMin="1" CardinalityMax="1"/>
+            <Element name="scheme" ValueScheme="string" CardinalityMin="1" CardinalityMax="1"/>
+        </Component>
+        <Component name="Note" CardinalityMin="0" CardinalityMax="unbounded">
+            <Element name="type" CardinalityMin="1" CardinalityMax="1">
+                <ValueScheme>
+                    <Vocabulary>
+                        <enumeration>
+                            <item>collection</item>
+                            <item>technical</item>
+                            <item>creditline</item>
+                        </enumeration>
+                    </Vocabulary>
+                </ValueScheme>
+            </Element>
+            <Element name="note" ValueScheme="string" CardinalityMin="1" CardinalityMax="1" Multilingual="true" cue:DisplayPriority="1" xmlns:cue="http://www.clarin.eu/cmd/cues/1"/>
+        </Component>
+    </Component>
+</ComponentSpec>

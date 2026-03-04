@@ -1,0 +1,51 @@
+
+[app]
+name="editem"
+title="eDitem apparatus Editor"
+def_prof="clarin.eu:cr1:p_1772521921676"
+cmdi_version="1.2"
+
+[app.access]
+#users="./htp.test" # location of the htpassword file, i.e. the "users" and "owner"
+read="any" # or "users" or "owner"
+write="any" # or "users" or "owner"
+
+[app.prof.artwork]
+prof="clarin.eu:cr1:p_1772521921676"
+title="string((/cmd:CMD/cmd:Components//cmdp:*[empty(cmdp:*)][normalize-space(text())!=''])[1])"
+
+[app.prof.artwork.list.first]
+xpath="string((/cmd:CMD/cmd:Components//cmdp:*[empty(cmdp:*)][normalize-space(text())!=''])[1])"
+label="First"
+sort="true"# or "false"
+filter="true"# or "'select'"
+
+[app.prof.bibl]
+prof="clarin.eu:cr1:p_1772521921674"
+title="string((/cmd:CMD/cmd:Components//cmdp:*[empty(cmdp:*)][normalize-space(text())!=''])[1])"
+
+[app.prof.bibl.list.first]
+xpath="string((/cmd:CMD/cmd:Components//cmdp:*[empty(cmdp:*)][normalize-space(text())!=''])[1])"
+label="First"
+sort="true"# or "false"
+filter="true"# or "'select'"
+
+[app.prof.org]
+prof="clarin.eu:cr1:p_1772521921677"
+title="string((/cmd:CMD/cmd:Components//cmdp:*[empty(cmdp:*)][normalize-space(text())!=''])[1])"
+
+[app.prof.org.list.first]
+xpath="string((/cmd:CMD/cmd:Components//cmdp:*[empty(cmdp:*)][normalize-space(text())!=''])[1])"
+label="First"
+sort="true"# or "false"
+filter="true"# or "'select'"
+
+[app.prof.person]
+prof="clarin.eu:cr1:p_1772521921675"
+title="string((/cmd:CMD/cmd:Components//cmdp:*[empty(cmdp:*)][normalize-space(text())!=''])[1])"
+
+[app.prof.person.list.first]
+xpath="string((/cmd:CMD/cmd:Components//cmdp:*[empty(cmdp:*)][normalize-space(text())!=''])[1])"
+label="First"
+sort="true"# or "false"
+filter="true"# or "'select'"
