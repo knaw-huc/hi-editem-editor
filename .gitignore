@@ -6,4 +6,5 @@ __pycache__
 config.xml
 /data/backup
 htp
-/data/apps/learner-corpora/trace
+/data/apps/editem/profiles/clarin.eu:cr1:p_1772521921675/records
+/data/apps/editem/trace

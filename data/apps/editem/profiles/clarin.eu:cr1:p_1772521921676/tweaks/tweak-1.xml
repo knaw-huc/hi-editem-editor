@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><ComponentSpec xmlns:clariah="http://www.clariah.eu/" xmlns:cue="http://www.clarin.eu/cmd/cues/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" isProfile="true" CMDVersion="1.2" CMDOriginalVersion="1.2" xsi:noNamespaceSchemaLocation="https://infra.clarin.eu/CMDI/1.x/xsd/cmd-component.xsd">
+    <Header>
+        <ID>clarin.eu:cr1:p_1772521921676</ID>
+        <Name>Artwork</Name>
+        <Description>artworks mentioned in the edition</Description>
+        <Status>development</Status>
+    </Header>
+    <Component name="Artwork">
+        <Element name="id"><!--cues--></Element>
+        <Element name="source"><!--cues--></Element>
+        <Element name="corresp"><!--cues--></Element>
+        <Element name="title"><!--cues--></Element>
+        <Element name="idno"><!--cues--></Element>
+        <Element name="desc"><!--cues--></Element>
+        <Element name="creationDate"><!--cues--></Element>
+        <Element name="creator" cue:class="skosType">
+            <clariah:autoCompleteURI>/app/editem/profile/clarin.eu:cr1:p_1772521921675/entity/person</clariah:autoCompleteURI>
+        </Element>
+        <Element name="after" cue:class="skosType">
+            <clariah:autoCompleteURI>/app/editem/profile/clarin.eu:cr1:p_1772521921675/entity/person</clariah:autoCompleteURI>
+        </Element>
+        <Component name="HorizontalSize">
+            <Element name="quantity"><!--cues--></Element>
+            <Element name="unit"><!--cues--></Element>
+        </Component>
+        <Component name="VericalSize">
+            <Element name="quantity"><!--cues--></Element>
+            <Element name="unit"><!--cues--></Element>
+        </Component>
+        <Component name="CatRef">
+            <Element name="ref"><!--cues--></Element>
+            <Element name="target"><!--cues--></Element>
+            <Element name="scheme"><!--cues--></Element>
+        </Component>
+        <Component name="Note">
+            <Element name="type">
+                
+            </Element>
+            <Element name="note"><!--cues--></Element>
+        </Component>
+    </Component>
+</ComponentSpec>

@@ -49,3 +49,11 @@ xpath="string((/cmd:CMD/cmd:Components//cmdp:*[empty(cmdp:*)][normalize-space(te
 label="First"
 sort="true"# or "false"
 filter="true"# or "'select'"
+
+[app.hooks.action.tei]
+level="rec"
+prof="clarin.eu:cr1:p_1772521921675"
+label="tei"
+endpoint="tei"
+hook="tei"
+
