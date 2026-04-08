@@ -21,5 +21,7 @@ def tei(req:Request, action:str, app: str, prof: str, nr: str, user:str) -> None
                 rec = file.read()
                 rec = proc.parse_xml(xml_text=rec)
                 res = executable.transform_to_string(xdm_node=rec)
+        else:
+            res = "TODO"
     return Response(content=res, media_type="application/xml")
 

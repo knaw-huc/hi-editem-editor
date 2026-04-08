@@ -51,7 +51,7 @@ sort="true"# or "false"
 filter="true"# or "'select'"
 
 [app.hooks.action.tei]
-level="rec"
+level="prof rec"
 prof="clarin.eu:cr1:p_1772521921675"
 label="tei"
 endpoint="tei"
