@@ -42,11 +42,17 @@ filter="true"# or "'select'"
 
 [app.prof.person]
 prof="clarin.eu:cr1:p_1772521921675"
-title="string((/cmd:CMD/cmd:Components//cmdp:*[empty(cmdp:*)][normalize-space(text())!=''])[1])"
+title="string((//cmdp:Person/cmdp:id[normalize-space(text())!=''])[1])"
 
-[app.prof.person.list.first]
-xpath="string((/cmd:CMD/cmd:Components//cmdp:*[empty(cmdp:*)][normalize-space(text())!=''])[1])"
-label="First"
+[app.prof.person.list.id]
+xpath="string((//cmdp:Person/cmdp:id[normalize-space(text())!=''])[1])"
+label="id"
+sort="true"# or "false"
+filter="true"# or "'select'"
+
+[app.prof.person.list.project]
+xpath="string-join(//cmdp:Person/cmdp:project,', ')"
+label="projects"
 sort="true"# or "false"
 filter="true"# or "'select'"
 
