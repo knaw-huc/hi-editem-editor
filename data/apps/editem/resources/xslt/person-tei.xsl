@@ -3,6 +3,7 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
     xmlns:cmdp="http://www.clarin.eu/cmd/1/profiles/clarin.eu:cr1:p_1772521921675"
+    xmlns:tei="ttp://www.tei-c.org/ns/1.0"
     exclude-result-prefixes="xs math cmdp"
     version="3.0">
     
@@ -17,53 +18,82 @@
     <xsl:template match="text()"/>
     
     <xsl:template match="/">
-        <xsl:choose>
-            <xsl:when test="normalize-space($q)!=''">
-                <tei q="{$q}">
-                    <xsl:for-each select="collection(concat($recs,'?match=record-\d+\.xml&amp;on-error=warning'))">
-                        <xsl:variable name="rec" select="."/>
-                        <xsl:message expand-text="yes">DBG:rec[{base-uri($rec)}]</xsl:message>
-                        <xsl:if test="exists($rec//cmdp:project[contains(lower-case(.),lower-case($q))])">
-                            <xsl:apply-templates select="$rec//cmdp:Person"/>
-                        </xsl:if>
-                    </xsl:for-each>
-                </tei>
-            </xsl:when>
-            <xsl:when test="null">
-                <tei>
-                    <xsl:for-each select="collection(concat($recs,'?match=record-\d+\.xml&amp;on-error=warning'))">
-                        <xsl:variable name="rec" select="."/>
-                        <xsl:apply-templates select="$rec//cmdp:Person"/>
-                    </xsl:for-each>
-                </tei>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:apply-templates/>
-            </xsl:otherwise>
-        </xsl:choose>
+        <xsl:processing-instruction name="xml-model">href="https://xmlschema.huygens.knaw.nl/editem-biolist.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"</xsl:processing-instruction>
+        <tei:TEI>
+            <tei:teiHeader>
+                <tei:fileDesc>
+                    <tei:titleStmt>
+                        <tei:title>
+                            <xsl:choose>
+                                <xsl:when test="normalize-space($q)!=''">
+                                    <xsl:value-of select="concat('project[',$q,']')"/>
+                                </xsl:when>
+                                <xsl:when test="null">
+                                    <xsl:value-of select="'all persons'"/>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:value-of select="concat('person[',//cmdp:Person/cmdp:id,']')"/>                                    
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </tei:title>
+                    </tei:titleStmt>
+                    <!--<tei:publicationStmt></tei:publicationStmt>-->
+                    <tei:sourceDesc>
+                        <tei:listPerson>
+                            <xsl:choose>
+                                <xsl:when test="normalize-space($q)!=''">
+                                    <xsl:for-each select="collection(concat($recs,'?match=record-\d+\.xml&amp;on-error=warning'))">
+                                        <xsl:variable name="rec" select="."/>
+                                        <xsl:message expand-text="yes">DBG:rec[{base-uri($rec)}]</xsl:message>
+                                        <xsl:if test="exists($rec//cmdp:project[contains(lower-case(.),lower-case($q))])">
+                                            <xsl:apply-templates select="$rec//cmdp:Person"/>
+                                        </xsl:if>
+                                    </xsl:for-each>
+                                </xsl:when>
+                                <xsl:when test="null">
+                                    <xsl:for-each select="collection(concat($recs,'?match=record-\d+\.xml&amp;on-error=warning'))">
+                                        <xsl:variable name="rec" select="."/>
+                                        <xsl:apply-templates select="$rec//cmdp:Person"/>
+                                    </xsl:for-each>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:apply-templates/>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </tei:listPerson>
+                    </tei:sourceDesc>
+                </tei:fileDesc>
+            </tei:teiHeader>
+        </tei:TEI>
     </xsl:template>
     
     <xsl:template match="cmdp:Person">
-        <person xml:id="{cmdp:id}">
+        <tei:person xml:id="{cmdp:id}">
             <xsl:apply-templates select="(cmdp:gender,cmdp:corresp)"/>
             <xsl:apply-templates select="* except (cmdp:id, cmdp:project,cmdp:gender,cmdp:corresp)"/>
-        </person>
+        </tei:person>
     </xsl:template>
     
-    <xsl:template match="cmdp:gender | cmdp:corresp | cmdp:full | cmdp:when | cmdp:type" priority="10">
-        <xsl:attribute name="{local-name()}" select="."/>
+    <xsl:template match="cmdp:Person/(cmdp:gender | cmdp:corresp | cmdp:full | cmdp:when | cmdp:type)" priority="10">
+        <xsl:attribute name="tei:{local-name()}" select="."/>
     </xsl:template>
     
     <xsl:template match="cmdp:id"/>
     <xsl:template match="cmdp:project"/>
     
     <xsl:template match="cmdp:Person//*">
-        <xsl:element name="{local-name()}">
+        <xsl:element name="tei:{local-name()}">
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
   
     <xsl:template match="cmdp:Person//text()">
         <xsl:copy/>
+    </xsl:template>
+
+    <xsl:template match="cmdp:Note" priority="10">
+        <tei:note type="{(cmdp:type,'bibliography')[1]}">
+            <xsl:value-of select="cmdp:note"/>
+        </tei:note>
     </xsl:template>
 </xsl:stylesheet>

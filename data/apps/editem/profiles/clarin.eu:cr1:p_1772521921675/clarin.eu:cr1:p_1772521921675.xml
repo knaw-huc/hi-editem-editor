@@ -2,102 +2,128 @@
 <ComponentSpec isProfile="true" CMDVersion="1.2" CMDOriginalVersion="1.2" xsi:noNamespaceSchemaLocation="https://infra.clarin.eu/CMDI/1.x/xsd/cmd-component.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <Header>
         <ID>clarin.eu:cr1:p_1772521921675</ID>
-        <Name>Person</Name>
+        <Name>Bio</Name>
         <Description>biographical entry</Description>
         <Status>development</Status>
     </Header>
-    <Component name="Person" CardinalityMin="1" CardinalityMax="1">
-        <Element name="project" ValueScheme="string" CardinalityMin="0" CardinalityMax="unbounded"/>
-        <Element name="id" ValueScheme="string" CardinalityMin="1" CardinalityMax="1" cue:DisplayPriority="1" xmlns:cue="http://www.clarin.eu/cmd/cues/1"/>
-        <Element name="gender" CardinalityMin="0" CardinalityMax="1">
+    <Component name="Bio" CardinalityMin="1" CardinalityMax="1">
+        <Element name="status" CardinalityMin="1" CardinalityMax="1" cue:DisplayPriority="1" xmlns:cue="http://www.clarin.eu/cmd/cues/1">
             <ValueScheme>
                 <Vocabulary>
                     <enumeration>
-                        <item AppInfo="female">1</item>
-                        <item AppInfo="male">2</item>
-                        <item AppInfo="nonbinary">3</item>
-                        <item AppInfo="intersex">4</item>
-                        <item AppInfo="unknown">9</item>
+                        <item>publish</item>
+                        <item>under construction</item>
                     </enumeration>
                 </Vocabulary>
             </ValueScheme>
         </Element>
-        <Element name="source" ValueScheme="anyURI" CardinalityMin="0" CardinalityMax="unbounded"/>
-        <Element name="nationality" ValueScheme="string" CardinalityMin="0" CardinalityMax="1"/>
-        <Component name="PersName" CardinalityMin="1" CardinalityMax="unbounded">
-            <Element name="full" CardinalityMin="1" CardinalityMax="1">
+        <Element name="project" ValueScheme="string" CardinalityMin="0" CardinalityMax="unbounded"/>
+        <Component name="Person" CardinalityMin="1" CardinalityMax="1">
+            <Element name="id" ValueScheme="string" CardinalityMin="1" CardinalityMax="1" cue:DisplayPriority="1" xmlns:cue="http://www.clarin.eu/cmd/cues/1"/>
+            <Element name="gender" CardinalityMin="0" CardinalityMax="1">
                 <ValueScheme>
                     <Vocabulary>
                         <enumeration>
-                            <item>yes</item>
-                            <item>abb</item>
+                            <item AppInfo="female">1</item>
+                            <item AppInfo="male">2</item>
+                            <item AppInfo="nonbinary">3</item>
+                            <item AppInfo="intersex">4</item>
+                            <item AppInfo="unknown">9</item>
                         </enumeration>
                     </Vocabulary>
                 </ValueScheme>
             </Element>
-            <Element name="forename" ValueScheme="string" CardinalityMin="1" CardinalityMax="1"/>
-            <Element name="surname" ValueScheme="string" CardinalityMin="1" CardinalityMax="1" cue:DisplayPriority="1" xmlns:cue="http://www.clarin.eu/cmd/cues/1"/>
-            <Element name="nameLink" ValueScheme="string" CardinalityMin="0" CardinalityMax="1"/>
-            <Element name="addname" ValueScheme="string" CardinalityMin="0" CardinalityMax="1"/>
-            <Element name="genName" ValueScheme="string" CardinalityMin="0" CardinalityMax="1"/>
-            <Element name="roleName" ValueScheme="string" CardinalityMin="1" CardinalityMax="1"/>
-        </Component>
-        <Component name="Birth" CardinalityMin="1" CardinalityMax="1">
-            <Element name="when" ValueScheme="decimal" CardinalityMin="0" CardinalityMax="1" cue:DisplayPriority="1" xmlns:cue="http://www.clarin.eu/cmd/cues/1"/>
-            <Element name="notBefore" ValueScheme="decimal" CardinalityMin="0" CardinalityMax="1"/>
-            <Element name="notAfter" ValueScheme="decimal" CardinalityMin="0" CardinalityMax="1"/>
-            <Element name="cert" CardinalityMin="0" CardinalityMax="1">
-                <ValueScheme>
-                    <Vocabulary>
-                        <enumeration>
-                            <item>medium</item>
-                            <item>low</item>
-                        </enumeration>
-                    </Vocabulary>
-                </ValueScheme>
-            </Element>
-            <Element name="precision" CardinalityMin="0" CardinalityMax="1">
-                <ValueScheme>
-                    <Vocabulary>
-                        <enumeration>
-                            <item>medium</item>
-                            <item>low</item>
-                        </enumeration>
-                    </Vocabulary>
-                </ValueScheme>
-            </Element>
-            <Component name="placeName" CardinalityMin="0" CardinalityMax="1">
-                <Element name="settlement" ValueScheme="string" CardinalityMin="0" CardinalityMax="1" cue:DisplayPriority="1" xmlns:cue="http://www.clarin.eu/cmd/cues/1"/>
-                <Element name="country" ValueScheme="string" CardinalityMin="0" CardinalityMax="1" cue:DisplayPriority="1" xmlns:cue="http://www.clarin.eu/cmd/cues/1"/>
+            <Element name="source" ValueScheme="anyURI" CardinalityMin="0" CardinalityMax="unbounded"/>
+            <Element name="nationality" ValueScheme="string" CardinalityMin="0" CardinalityMax="1"/>
+            <Component name="PersName" CardinalityMin="1" CardinalityMax="unbounded">
+                <Element name="full" CardinalityMin="1" CardinalityMax="1">
+                    <ValueScheme>
+                        <Vocabulary>
+                            <enumeration>
+                                <item>yes</item>
+                                <item>abb</item>
+                            </enumeration>
+                        </Vocabulary>
+                    </ValueScheme>
+                </Element>
+                <Element name="forename" ValueScheme="string" CardinalityMin="1" CardinalityMax="1"/>
+                <Element name="surname" ValueScheme="string" CardinalityMin="1" CardinalityMax="1" cue:DisplayPriority="1" xmlns:cue="http://www.clarin.eu/cmd/cues/1"/>
+                <Element name="nameLink" ValueScheme="string" CardinalityMin="0" CardinalityMax="1"/>
+                <Element name="addname" ValueScheme="string" CardinalityMin="0" CardinalityMax="1"/>
+                <Element name="genName" ValueScheme="string" CardinalityMin="0" CardinalityMax="1"/>
+                <Element name="roleName" ValueScheme="string" CardinalityMin="0" CardinalityMax="1"/>
             </Component>
-        </Component>
-        <Component name="Death" CardinalityMin="1" CardinalityMax="1">
-            <Element name="when" ValueScheme="decimal" CardinalityMin="0" CardinalityMax="1" cue:DisplayPriority="1" xmlns:cue="http://www.clarin.eu/cmd/cues/1"/>
-            <Element name="notBefore" ValueScheme="decimal" CardinalityMin="0" CardinalityMax="1"/>
-            <Element name="notAfter" ValueScheme="decimal" CardinalityMin="0" CardinalityMax="1"/>
-            <Element name="cert" CardinalityMin="0" CardinalityMax="1">
-                <ValueScheme>
-                    <Vocabulary>
-                        <enumeration>
-                            <item>medium</item>
-                            <item>low</item>
-                        </enumeration>
-                    </Vocabulary>
-                </ValueScheme>
-            </Element>
-            <Element name="precision" CardinalityMin="0" CardinalityMax="1">
-                <ValueScheme>
-                    <Vocabulary>
-                        <enumeration>
-                            <item>medium</item>
-                            <item>low</item>
-                        </enumeration>
-                    </Vocabulary>
-                </ValueScheme>
-            </Element>
-            <Component name="placeName" CardinalityMin="0" CardinalityMax="1">
-                <Element name="settlement" ValueScheme="string" CardinalityMin="0" CardinalityMax="1" cue:DisplayPriority="1" xmlns:cue="http://www.clarin.eu/cmd/cues/1"/>
-                <Element name="country" ValueScheme="string" CardinalityMin="0" CardinalityMax="1" cue:DisplayPriority="1" xmlns:cue="http://www.clarin.eu/cmd/cues/1"/>
+            <Component name="Birth" CardinalityMin="1" CardinalityMax="1">
+                <Element name="when" ValueScheme="decimal" CardinalityMin="0" CardinalityMax="1" cue:DisplayPriority="1" xmlns:cue="http://www.clarin.eu/cmd/cues/1"/>
+                <Element name="notBefore" ValueScheme="decimal" CardinalityMin="0" CardinalityMax="1"/>
+                <Element name="notAfter" ValueScheme="decimal" CardinalityMin="0" CardinalityMax="1"/>
+                <Element name="cert" CardinalityMin="0" CardinalityMax="1">
+                    <ValueScheme>
+                        <Vocabulary>
+                            <enumeration>
+                                <item>medium</item>
+                                <item>low</item>
+                            </enumeration>
+                        </Vocabulary>
+                    </ValueScheme>
+                </Element>
+                <Element name="precision" CardinalityMin="0" CardinalityMax="1">
+                    <ValueScheme>
+                        <Vocabulary>
+                            <enumeration>
+                                <item>medium</item>
+                                <item>low</item>
+                            </enumeration>
+                        </Vocabulary>
+                    </ValueScheme>
+                </Element>
+                <Component name="placeName" CardinalityMin="0" CardinalityMax="1">
+                    <Element name="settlement" ValueScheme="string" CardinalityMin="0" CardinalityMax="1" cue:DisplayPriority="1" xmlns:cue="http://www.clarin.eu/cmd/cues/1"/>
+                    <Element name="country" ValueScheme="string" CardinalityMin="0" CardinalityMax="1" cue:DisplayPriority="1" xmlns:cue="http://www.clarin.eu/cmd/cues/1"/>
+                </Component>
+            </Component>
+            <Component name="Death" CardinalityMin="1" CardinalityMax="1">
+                <Element name="when" ValueScheme="decimal" CardinalityMin="0" CardinalityMax="1" cue:DisplayPriority="1" xmlns:cue="http://www.clarin.eu/cmd/cues/1"/>
+                <Element name="notBefore" ValueScheme="decimal" CardinalityMin="0" CardinalityMax="1"/>
+                <Element name="notAfter" ValueScheme="decimal" CardinalityMin="0" CardinalityMax="1"/>
+                <Element name="cert" CardinalityMin="0" CardinalityMax="1">
+                    <ValueScheme>
+                        <Vocabulary>
+                            <enumeration>
+                                <item>medium</item>
+                                <item>low</item>
+                            </enumeration>
+                        </Vocabulary>
+                    </ValueScheme>
+                </Element>
+                <Element name="precision" CardinalityMin="0" CardinalityMax="1">
+                    <ValueScheme>
+                        <Vocabulary>
+                            <enumeration>
+                                <item>medium</item>
+                                <item>low</item>
+                            </enumeration>
+                        </Vocabulary>
+                    </ValueScheme>
+                </Element>
+                <Component name="placeName" CardinalityMin="0" CardinalityMax="1">
+                    <Element name="settlement" ValueScheme="string" CardinalityMin="0" CardinalityMax="1" cue:DisplayPriority="1" xmlns:cue="http://www.clarin.eu/cmd/cues/1"/>
+                    <Element name="country" ValueScheme="string" CardinalityMin="0" CardinalityMax="1" cue:DisplayPriority="1" xmlns:cue="http://www.clarin.eu/cmd/cues/1"/>
+                </Component>
+            </Component>
+            <Component name="Note" CardinalityMin="0" CardinalityMax="unbounded">
+                <Element name="type" CardinalityMin="1" CardinalityMax="1">
+                    <ValueScheme>
+                        <Vocabulary>
+                            <enumeration>
+                                <item>shortdesc</item>
+                                <item>biographic</item>
+                                <item>bibliography</item>
+                            </enumeration>
+                        </Vocabulary>
+                    </ValueScheme>
+                </Element>
+                <Element name="note" ValueScheme="string" CardinalityMin="1" CardinalityMax="1" Multilingual="true" cue:DisplayPriority="1" xmlns:cue="http://www.clarin.eu/cmd/cues/1"/>
             </Component>
         </Component>
     </Component>

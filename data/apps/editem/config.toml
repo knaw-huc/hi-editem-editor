@@ -5,6 +5,10 @@ title="eDitem apparatus Editor"
 def_prof="clarin.eu:cr1:p_1772521921676"
 cmdi_version="1.2"
 
+[app.js]
+script="editem.js"
+#init="alert('Welcome to Editem!')"
+
 [app.access]
 #users="./htp.test" # location of the htpassword file, i.e. the "users" and "owner"
 read="any" # or "users" or "owner"
@@ -42,24 +46,36 @@ filter="true"# or "'select'"
 
 [app.prof.person]
 prof="clarin.eu:cr1:p_1772521921675"
-title="string((//cmdp:Person/cmdp:id[normalize-space(text())!=''])[1])"
+title="string((//cmdp:Bio/cmdp:Person/cmdp:id[normalize-space(text())!=''])[1])"
 
 [app.prof.person.list.id]
-xpath="string((//cmdp:Person/cmdp:id[normalize-space(text())!=''])[1])"
+xpath="string((//cmdp:Bio/cmdp:Person/cmdp:id[normalize-space(text())!=''])[1])"
 label="id"
 sort="true"# or "false"
 filter="true"# or "'select'"
 
 [app.prof.person.list.project]
-xpath="string-join(//cmdp:Person/cmdp:project,', ')"
+xpath="string-join(//cmdp:Bio/cmdp:project,', ')"
 label="projects"
 sort="true"# or "false"
 filter="true"# or "'select'"
 
+[app.prof.person.list.status]
+xpath="string(//cmdp:Bio/cmdp:status)"
+label="Status"
+sort="true"
+filter="'select'"
+
+[app.hooks.action.prof-tei]
+level="prof"
+prof="clarin.eu:cr1:p_1772521921675"
+label="tei"
+endpoint="javascript:doTEI();"
+hook="tei"
+
 [app.hooks.action.tei]
-level="prof rec"
+level="rec"
 prof="clarin.eu:cr1:p_1772521921675"
 label="tei"
 endpoint="tei"
 hook="tei"
-
