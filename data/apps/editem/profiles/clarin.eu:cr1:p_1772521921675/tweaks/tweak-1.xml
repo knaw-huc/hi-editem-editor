@@ -18,7 +18,16 @@
 9. unknown
                 </clariah:explanation>
             </Element>
-            <Component name="Note">
+            <Component name="PersName" cue:collapse="yes">
+                <Element name="full" cue:displayOrder="1"/>
+                <Element name="nameLink" cue:displayOrder="2"/>
+                <Element name="forename" cue:displayOrder="3"/>
+                <Component name="Surname" cue:displayOrder="4"/>
+            </Component>
+            <Component name="Birth" cue:collapse="yes"/>
+            <Component name="Floruit" cue:collapse="yes"/>
+            <Component name="Death" cue:collapse="yes"/>
+            <Component name="Note" cue:collapse="yes">
                 <Element name="note" cue:inputWidth="60" cue:inputHeight="8"/>
             </Component>
         </Component>

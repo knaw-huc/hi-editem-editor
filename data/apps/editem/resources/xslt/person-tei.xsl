@@ -91,9 +91,10 @@
         <xsl:copy/>
     </xsl:template>
 
-    <xsl:template match="cmdp:Note" priority="10">
-        <tei:note type="{(cmdp:type,'bibliography')[1]}">
-            <xsl:value-of select="cmdp:note"/>
+    <xsl:template match="cmdp:note" priority="10">
+        <tei:note type="{(../cmdp:type,'bibliography')[1]}">
+            <xsl:copy-of select="@xml:lang"/>
+            <xsl:value-of select="."/>
         </tei:note>
     </xsl:template>
 </xsl:stylesheet>
