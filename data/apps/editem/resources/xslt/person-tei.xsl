@@ -93,8 +93,17 @@
 
     <xsl:template match="cmdp:note" priority="10">
         <tei:note type="{(../cmdp:type,'bibliography')[1]}">
-            <xsl:copy-of select="@xml:lang"/>
+            <xsl:copy-of select="@xml:lang[normalize-space(.)!='']"/>
             <xsl:value-of select="."/>
         </tei:note>
+    </xsl:template>
+    
+    <xsl:template match="cmdp:Surname" priority="10">
+        <tei:surname>
+            <xsl:if test="normalize-space(cmdp:type)!=''">
+                <xsl:attribute name="type" select="normalize-space(cmdp:type)"/>
+            </xsl:if>
+            <xsl:value-of select="cmdp:surname"/>
+        </tei:surname>
     </xsl:template>
 </xsl:stylesheet>
